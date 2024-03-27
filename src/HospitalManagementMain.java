@@ -1,10 +1,7 @@
 import enums.DoctorSpecialityEnum;
 import enums.UserOptionEnum;
-import models.Doctor;
 import models.Slot;
 import services.DoctorService;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 

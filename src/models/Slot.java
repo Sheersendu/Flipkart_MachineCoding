@@ -1,10 +1,7 @@
 package models;
 
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Slot {
     private String startTime;
@@ -15,7 +12,7 @@ public class Slot {
         this.endTime = endTime;
     }
 
-    private boolean validSlot()
+    private boolean isValid()
     {
         String[] slotStartTime = this.startTime.split(":");
         String[] endStartTime = this.endTime.split(":");
@@ -36,7 +33,7 @@ public class Slot {
             String[] slotTimings = slot.split("-");
             String startTime = slotTimings[0].trim(), endTime = slotTimings[1].trim();
             Slot newSlot = new Slot(startTime,endTime);
-            if (newSlot.validSlot())
+            if (newSlot.isValid())
             {
                 slotList.add(newSlot);
             }

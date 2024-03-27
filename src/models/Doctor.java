@@ -2,12 +2,12 @@ package models;
 
 import enums.DoctorSpecialityEnum;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Doctor extends BaseModel{
 
-    private List<Slot> slots = new ArrayList<>();
+    private Set<Slot> slots = new HashSet<>();
 
     private DoctorSpecialityEnum speciality;
 
