@@ -28,4 +28,9 @@ public class Doctor extends BaseModel{
         return this.slots;
     }
 
+    public DoctorSpecialityEnum getSpeciality()
+    {
+        return this.speciality;
+    }
+
 }

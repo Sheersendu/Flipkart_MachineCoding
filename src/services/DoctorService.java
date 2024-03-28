@@ -11,12 +11,10 @@ import java.util.stream.Collectors;
 
 public class DoctorService {
 
-    private static DataStore dataStore = new DataStore();
-
     public static Doctor register(String name, DoctorSpecialityEnum speciality)
     {
         Doctor newDoctor = new Doctor(name, speciality);
-        dataStore.addDoctor(newDoctor);
+        DataStore.addDoctor(newDoctor);
         return newDoctor;
     }
 
@@ -35,7 +33,7 @@ public class DoctorService {
     }
     private static Doctor getDoctor(String name)
     {
-        for (Doctor doctor : dataStore.getDoctorList()) {
+        for (Doctor doctor : DataStore.getDoctorList()) {
             if (doctor.getName().equals(name))
                 return doctor;
         }

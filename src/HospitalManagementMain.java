@@ -2,6 +2,8 @@ import enums.DoctorSpecialityEnum;
 import enums.UserOptionEnum;
 import models.Slot;
 import services.DoctorService;
+import services.PatientService;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ public class HospitalManagementMain {
         while (true)
         {
             System.out.print("i: ");
-            String userInput = scannerObject.nextLine();
+            String userInput = scannerObject.nextLine().trim();
             if(userInput.equals("quit"))
                 break;
             else
@@ -38,13 +40,18 @@ public class HospitalManagementMain {
                             DoctorService.addSlot(doctorName, slots);
                             System.out.println("Done Doc!");
                             break;
+                        case UserOptionEnum.showAvailBySpeciality:
+                            doctorSpeciality = DoctorSpecialityEnum.valueOf(userInputList.get(1).trim());
+                            System.out.println("Name : Timing");
+                            PatientService.getDoctorsBySpeciality(doctorSpeciality);
+                            break;
                         default:
-                            System.out.println("Invalid option!");
+                            System.out.println("Invalid option!" + userOption + userOptionEnum);
                     }
                 }
                 catch (Exception e)
                 {
-                    System.out.println(e.getLocalizedMessage());
+                    System.out.println(e);
                 }
             }
         }
