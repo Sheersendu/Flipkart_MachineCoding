@@ -3,6 +3,7 @@ package enums;
 public enum UserOptionEnum {
     registerDoc,
     markDocAvail,
-    showAvailBySpeciality
+    showAvailBySpeciality,
+    registerPatient
 
 }

@@ -3,6 +3,7 @@ package services;
 import datastore.DataStore;
 import enums.DoctorSpecialityEnum;
 import models.Doctor;
+import models.Patient;
 import models.Slot;
 
 import java.util.ArrayList;
@@ -39,5 +40,12 @@ public class PatientService {
                 System.out.println("Dr. " + doctorName + ": (" + key + ")");
             });
         });
+    }
+
+    public static Patient register(String name)
+    {
+        Patient newPatient = new Patient(name);
+        DataStore.addPatient(newPatient);
+        return newPatient;
     }
 }

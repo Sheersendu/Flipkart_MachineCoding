@@ -42,11 +42,16 @@ public class HospitalManagementMain {
                             break;
                         case UserOptionEnum.showAvailBySpeciality:
                             doctorSpeciality = DoctorSpecialityEnum.valueOf(userInputList.get(1).trim());
-                            System.out.println("Name : Timing");
+                            System.out.println("Doctor Name : Timing");
                             PatientService.getDoctorsBySpeciality(doctorSpeciality);
                             break;
+                        case UserOptionEnum.registerPatient:
+                            String patientName = userInputList.get(1).trim();
+                            PatientService.register(patientName);
+                            System.out.println(patientName + " registered successfully!");
+                            break;
                         default:
-                            System.out.println("Invalid option!" + userOption + userOptionEnum);
+                            System.out.println("Invalid option!");
                     }
                 }
                 catch (Exception e)
