@@ -2,14 +2,14 @@ package models;
 
 import enums.DoctorSpecialityEnum;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Doctor extends BaseModel{
 
-    private Set<Slot> slots = new HashSet<>();
+    private final List<Slot> slots = new ArrayList<>();
 
-    private DoctorSpecialityEnum speciality;
+    private final DoctorSpecialityEnum speciality;
 
 
     public Doctor(String name, DoctorSpecialityEnum speciality)
@@ -21,6 +21,11 @@ public class Doctor extends BaseModel{
     public void addSlot(Slot slot)
     {
         this.slots.add(slot);
+    }
+
+    public List<Slot> getSlots()
+    {
+        return this.slots;
     }
 
 }

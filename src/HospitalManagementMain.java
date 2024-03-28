@@ -7,10 +7,13 @@ import java.util.Scanner;
 
 public class HospitalManagementMain {
     public static void main(String[] args) {
-        System.out.println("Hi from hospital management!");
+        System.out.println(new String(new char[50]).replace("\0", "*"));
+        System.out.println("Welcome to hospital management system!");
+        System.out.println(new String(new char[50]).replace("\0", "*"));
         Scanner scannerObject = new Scanner(System.in);
         while (true)
         {
+            System.out.print("i: ");
             String userInput = scannerObject.nextLine();
             if(userInput.equals("quit"))
                 break;
@@ -21,6 +24,7 @@ public class HospitalManagementMain {
                     List<String> userInputList = List.of(userInput.split("->"));
                     String userOption = userInputList.getFirst().trim();
                     UserOptionEnum userOptionEnum = UserOptionEnum.valueOf(userOption);
+                    System.out.print("o: ");
                     switch (userOptionEnum) {
                         case UserOptionEnum.registerDoc:
                             String doctorName = userInputList.get(1).trim();

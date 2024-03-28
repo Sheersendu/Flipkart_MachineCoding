@@ -41,4 +41,9 @@ public class Slot {
         return slotList;
     }
 
+    public String getDetails()
+    {
+        return (this.startTime + "-" + this.endTime);
+    }
+
 }

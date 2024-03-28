@@ -6,6 +6,7 @@ import models.Doctor;
 import models.Slot;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class DoctorService {
@@ -24,7 +25,12 @@ public class DoctorService {
         Doctor requestedDoctor = getDoctor(name);
         for(Slot slot : slots)
         {
-            requestedDoctor.addSlot(slot);
+            List<Slot> requestedDoctorSlots = requestedDoctor.getSlots()
+                    .stream()
+                    .filter(s -> s.getDetails().equals(slot.getDetails()))
+                    .collect(Collectors.toList());
+            if(requestedDoctorSlots.toArray().length == 0)
+                requestedDoctor.addSlot(slot);
         }
     }
     private static Doctor getDoctor(String name)
