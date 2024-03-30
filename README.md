@@ -97,3 +97,25 @@ The input/output need not be exactly in this format but the functionality should
 - i: showAppointmentsBooked(PatientF)
 - o: Booking id: 5280, Dr Curious 9:00
 - o: Booking id: 5587 , Dr Daring 11:00
+
+<details open>
+<summary><strong>Version 1</strong></summary>
+<hr />
+
+<h3>Assumptions: </h3>
+
+- No duplicate Doctor name
+- Every call is synchronous
+- Wait-list feature is not necessary
+
+<h4> Time taken : 7 hours 😞</h4>
+
+<h3> Improvements (I can think of): </h3>
+
+1. Use interfaces
+2. Use Builder DP for creation of Doctor, Patient, Booking objects(we don't have optional params then?)
+3. Make DataStore Singleton
+4. Make createBooking transactional(InMemory Transaction Handling)
+5. Different Slot display strategies
+
+</details>
