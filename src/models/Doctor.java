@@ -21,6 +21,11 @@ public class Doctor extends BaseModel{
 
     public void addSlot(Slot slot)
     {
+        for(Booking existingBooking : bookings)
+        {
+            if(existingBooking.getBookingSlot().getDetails().equals(slot.getDetails()))
+                throw new IllegalArgumentException("Slot: " + slot.getDetails() + " is already booked!");
+        }
         this.slots.add(slot);
     }
 
