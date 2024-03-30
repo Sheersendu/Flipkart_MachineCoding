@@ -15,7 +15,7 @@ public class Patient extends BaseModel{
         for(Booking existingBooking : bookings)
         {
             if(existingBooking.getBookingSlot().getDetails().equals(bookingSlot.getDetails()))
-                throw new IllegalArgumentException("Slot is already booked!");
+                throw new IllegalArgumentException("Slot is already booked with another doctor!");
         }
         bookings.add(booking);
     }

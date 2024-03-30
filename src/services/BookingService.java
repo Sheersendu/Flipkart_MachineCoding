@@ -18,8 +18,8 @@ public class BookingService {
         Booking newBooking = new Booking(generateBookingID(), slot, patient, doctor);
         try {
             // next 3 steps should be transactional but how?
-            doctor.addBooking(newBooking);
             patient.addBooking(newBooking);
+            doctor.addBooking(newBooking);
             DataStore.addBooking(newBooking);
         }
         catch (Exception e)
