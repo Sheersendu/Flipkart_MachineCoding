@@ -8,6 +8,7 @@ import java.util.List;
 public class Doctor extends BaseModel{
 
     private final List<Slot> slots = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
 
     private final DoctorSpecialityEnum speciality;
 
@@ -31,6 +32,40 @@ public class Doctor extends BaseModel{
     public DoctorSpecialityEnum getSpeciality()
     {
         return this.speciality;
+    }
+
+    public void addBooking(Booking booking)
+    {
+        Slot bookingSlot = booking.getBookingSlot();
+        Slot matchingSlot = null;
+        for(Booking existingBooking : bookings)
+        {
+            if(existingBooking.getBookingSlot().getDetails().equals(bookingSlot.getDetails()))
+                throw new IllegalArgumentException("Slot is already booked!");
+        }
+        for(Slot slot : slots)
+        {
+            if(slot.getDetails().equals(bookingSlot.getDetails()))
+            {
+                matchingSlot = slot;
+                break;
+            }
+        }
+        if(matchingSlot != null)
+        {
+            this.bookings.add(booking);
+            this.slots.remove(matchingSlot);
+        }
+        else {
+            throw new IllegalArgumentException("Doctor has no such slot available!");
+        }
+    }
+
+    public void cancelBooking(Booking booking)
+    {
+        Slot bookingSlot = booking.getBookingSlot();
+        bookings.remove(booking);
+        slots.add(bookingSlot);
     }
 
 }

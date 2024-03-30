@@ -4,6 +4,9 @@ public enum UserOptionEnum {
     registerDoc,
     markDocAvail,
     showAvailBySpeciality,
-    registerPatient
+    registerPatient,
+    bookAppointment,
+    cancelBookingID,
+    showBookings
 
 }

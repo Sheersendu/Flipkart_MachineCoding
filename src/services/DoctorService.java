@@ -31,12 +31,12 @@ public class DoctorService {
                 requestedDoctor.addSlot(slot);
         }
     }
-    private static Doctor getDoctor(String name)
+    public static Doctor getDoctor(String name)
     {
         for (Doctor doctor : DataStore.getDoctorList()) {
             if (doctor.getName().equals(name))
                 return doctor;
         }
-        throw new IllegalArgumentException("Doctor Doesn't exists");
+        throw new IllegalArgumentException("Doctor does not exists");
     }
 }

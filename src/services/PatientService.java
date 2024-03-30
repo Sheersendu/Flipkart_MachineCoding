@@ -34,12 +34,21 @@ public class PatientService {
             });
         });
         ArrayList<String> sortedKeys = new ArrayList<>(doctorTimings.keySet());
-        Collections.sort(sortedKeys);
-        sortedKeys.forEach((key) -> {
-            doctorTimings.get(key).forEach((doctorName) -> {
-                System.out.println("Dr. " + doctorName + ": (" + key + ")");
+        if(sortedKeys.isEmpty())
+        {
+            doctorSpecialityEnumListHashMap.forEach((doctor) -> {
+                System.out.println("Dr. " + doctor.getName() + ": No slots available!");
             });
-        });
+        }
+        else
+        {
+            Collections.sort(sortedKeys);
+            sortedKeys.forEach((key) -> {
+                doctorTimings.get(key).forEach((doctorName) -> {
+                    System.out.println("Dr. " + doctorName + ": (" + key + ")");
+                });
+            });
+        }
     }
 
     public static Patient register(String name)
@@ -47,5 +56,16 @@ public class PatientService {
         Patient newPatient = new Patient(name);
         DataStore.addPatient(newPatient);
         return newPatient;
+    }
+
+    public static Patient getPatient(String name)
+    {
+        List<Patient> patients = DataStore.getPatientList();
+        for(Patient patient : patients)
+        {
+            if(patient.getName().equals(name))
+                return patient;
+        }
+        throw new IllegalArgumentException("Patient does not exists!");
     }
 }
